@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>KesKo</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+
+
+
+	<context-param>
+		<param-name>OracleDriver</param-name>
+		<param-value>oracle.jdbc.OracleDriver</param-value>
+	</context-param>
+	<context-param>
+		<param-name>OracleURL</param-name>
+		<param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+	</context-param>
+	<context-param>
+		<param-name>OracleId</param-name>
+		<param-value>kesko</param-value>
+	</context-param>
+	<context-param>
+		<param-name>OraclePwd</param-name>
+		<param-value>1234</param-value>
+	</context-param>
+	
+	<!-- 세션유지시간 설정 : web.xml에서는 분단위로 지정한다. -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+	<context-param>
+		<param-name>POSTS_PER_PAGE</param-name>
+		<param-value>6</param-value>
+	</context-param>
+	<!-- 한 블럭당 출력할 페이지번호의 갯수 -->
+	<context-param>
+		<param-name>PAGES_PER_BLOCK</param-name>
+		<param-value>2</param-value>
+	</context-param>
+	
+	
+	<!-- 관리자 공지사항 게시판 매핑 -->
+	<servlet>
+		<servlet-name>KESBoardList</servlet-name>
+		<servlet-class>kesboard.TablesController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KESBoardList</servlet-name>
+		<url-pattern>/kesboard/tables.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>KESBoardView</servlet-name>
+		<servlet-class>kesboard.ViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KESBoardView</servlet-name>
+		<url-pattern>/kesboard/adminview.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>KESBoardPass</servlet-name>
+		<servlet-class>kesboard.PassController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KESBoardPass</servlet-name>
+		<url-pattern>/kesboard/adminpass.do</url-pattern>
+	</servlet-mapping>	
+
+	<servlet>
+		<servlet-name>KESBoardEdit</servlet-name>
+		<servlet-class>kesboard.EditController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KESBoardEdit</servlet-name>
+		<url-pattern>/kesboard/adminedit.do</url-pattern>
+	</servlet-mapping>	
+
+	<servlet>
+		<servlet-name>KESBoardWrite</servlet-name>
+		<servlet-class>kesboard.WriteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KESBoardWrite</servlet-name>
+		<url-pattern>/kesboard/adminwrite.do</url-pattern>
+	</servlet-mapping>	
+
+
+
+	<!-- 여기부터는 메인 홈페이지 공지사항 -->		 
+	<servlet>
+		<servlet-name>KeskoBoardList</servlet-name>
+		<servlet-class>kesboard.TablesController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KeskoBoardList</servlet-name>
+		<url-pattern>/kesboard/list.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>KeskoBoardView</servlet-name>
+		<servlet-class>kesboard.ViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KeskoBoardView</servlet-name>
+		<url-pattern>/kesboard/view.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<!-- 메인 홈페이지 회원가입 매핑 -->
+	<servlet>
+		<servlet-name>KesUserRegist</servlet-name>
+		<servlet-class>kesuser.RegisterController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KesUserRegist</servlet-name>
+		<url-pattern>/kesuser/register.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>KesUserLogin</servlet-name>
+		<servlet-class>kesuser.LoginController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KesUserLogin</servlet-name>
+		<url-pattern>/kesuser/login.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdminKesUserLogin</servlet-name>
+		<servlet-class>kesuser.LoginController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminKesUserLogin</servlet-name>
+		<url-pattern>/admin/adminlogin.do</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- 메인 홈페이지 자유게시판 매핑 -->
+	<servlet>
+		<servlet-name>FreeBoardList</servlet-name>
+		<servlet-class>freeboard.FreeTablesController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FreeBoardList</servlet-name>
+		<url-pattern>/freeboard/freelist.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FreeBoardView</servlet-name>
+		<servlet-class>freeboard.FreeViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FreeBoardView</servlet-name>
+		<url-pattern>/freeboard/freeview.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>FreeBoardPass</servlet-name>
+		<servlet-class>freeboard.FreePassController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FreeBoardPass</servlet-name>
+		<url-pattern>/freeboard/freepass.do</url-pattern>
+	</servlet-mapping>	
+
+	<servlet>
+		<servlet-name>FreeBoardEdit</servlet-name>
+		<servlet-class>freeboard.FreeEditController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FreeBoardEdit</servlet-name>
+		<url-pattern>/freeboard/freeedit.do</url-pattern>
+	</servlet-mapping>	
+
+	<servlet>
+		<servlet-name>FreeBoardWrite</servlet-name>
+		<servlet-class>freeboard.FreeWriteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FreeBoardWrite</servlet-name>
+		<url-pattern>/freeboard/freewrite.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 어드민 홈페이지에서 자유게시판 매핑 -->
+	<servlet>
+		<servlet-name>AdminFreeBoardList</servlet-name>
+		<servlet-class>freeboard.FreeTablesController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminFreeBoardList</servlet-name>
+		<url-pattern>/freeboard/adminfreelist.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminFreeBoardView</servlet-name>
+		<servlet-class>freeboard.FreeViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminFreeBoardView</servlet-name>
+		<url-pattern>/freeboard/adminfreeview.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminFreeBoardWrite</servlet-name>
+		<servlet-class>freeboard.FreeWriteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminFreeBoardWrite</servlet-name>
+		<url-pattern>/freeboard/adminfreewrite.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdminFreeBoardPass</servlet-name>
+		<servlet-class>freeboard.FreeAdminPassController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminFreeBoardPass</servlet-name>
+		<url-pattern>/freeboard/adminfreepass.do</url-pattern>
+	</servlet-mapping>
+	
+<context-param>
+	<param-name>maxPostSize</param-name>
+	<param-value>1024000</param-value>
+</context-param>
+
+<!-- 한글깨짐에 대한 필터설정 : 현재 개발중인 웹 애플리케이션 전체에 적용한다.
+		웹애플리케이션으로 들어오는 모든 요청에 대해 문자 인코딩을 UTF-8로 하겠다는
+		필터 설정이다. -->
+	<filter>
+	   <filter-name>SetCharEncoding</filter-name>
+	   <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+     	<init-param>
+      	 	<param-name>encoding</param-name>
+      		<param-value>utf-8</param-value>
+     	</init-param>
+	</filter>
+	<filter-mapping>
+	   <filter-name>SetCharEncoding</filter-name>
+	   <url-pattern>/*</url-pattern>
+	 </filter-mapping>
+	 
+	 
+	 
+	 
+	<servlet>
+		<servlet-name>link01Controller</servlet-name>
+		<servlet-class>servlet.Link01Controller</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>link01Controller</servlet-name>
+		<url-pattern>/servlet/link01.do</url-pattern>
+	</servlet-mapping>
+	
+	
+ 	<servlet>
+		<servlet-name>RegisterController</servlet-name>
+		<servlet-class>kesuser.PlayerRegistController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegisterController</servlet-name>
+		<url-pattern>/register/registration2.do</url-pattern>
+	</servlet-mapping>
+</web-app>

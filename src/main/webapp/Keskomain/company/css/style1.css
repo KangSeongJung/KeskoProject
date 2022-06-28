@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.view_box .intro_direction .cnt_direction{margin-top: 40px}
+.view_box .intro_direction .cnt_direction p{margin: 0}
+.view_box .intro_direction .cnt_direction > div{float: left;width: 48%}
+.view_box .intro_direction .cnt_direction > div + div{margin-left: 4%}
+.view_box .intro_direction .cnt_direction .dir_tit{font-size: 20px;padding: 10px 5%;background: #0ac6af;color: #fff}
+.view_box .intro_direction .cnt_direction > div > div{padding: 10px 5%}
+ .view_box .intro_direction .cnt_direction .dir_subtit{position: relative;font-size: 18px;padding-left: 20px;}
+ .view_box .intro_direction .cnt_direction .dir_subtit:before{content: "";position: absolute; top: 10px; left: 0;width: 5px;height: 5px;border-radius: 50%;background: #0ac6af}
+ .view_box .intro_direction .cnt_direction .dir_subtit + p{padding: 4px 0 12px}
+ .view_box .intro_direction .cnt_direction .direction2 div p{position: relative;padding-left: 20px;padding-bottom: 4px}
+ .view_box .intro_direction .cnt_direction .direction2 div p:before{content: "";position: absolute; top: 10px; left: 0;width: 5px;height: 5px;border-radius: 50%;background: #0ac6af}
+
+ .div2{color: black;}
